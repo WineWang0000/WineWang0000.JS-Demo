@@ -1,0 +1,74 @@
+ol{
+	list-style: none;
+}
+*{
+	margin: 0;
+	padding: 0;
+}
+.icon {
+	width: 1em; height: 1em;
+	vertical-align: -0.15em;
+	fill: currentColor;
+	overflow: hidden;
+	font-size: 20px;
+	padding: 10px;
+}
+.tool svg{
+	width: 1.2em;
+	height: 1.2em;
+	transition: all 0.3s;
+}
+.tool svg.active{
+	transform: scale(1.2);
+}
+#x{
+  background: white;
+}
+body{
+	margin: 0;
+	height: 100vh;
+	overflow: hidden;
+}
+.tool{
+  position: fixed;
+  top: 3px;
+  left: 5px;
+}
+button{
+  border:none;
+  background: #000;
+	color: white;
+	border-radius: 2px;
+}
+.tool > .brush{
+  display: none;
+}
+.tool.play > .brush{
+  display: inline-block;
+}
+.tool.play > .eraser{
+  display: none;
+}
+.colors{
+	position: fixed;
+	top: 50px;
+	left: 15px;
+}
+.colors > li{
+	width: 22px;
+	height: 22px;
+	margin: 30px 0;
+	border-radius: 50%;
+}
+.colors > li:nth-child(1){
+	background:red;
+}
+.colors > li:nth-child(2){
+	background:green;
+}
+.colors > li:nth-child(3){
+	background:blue;
+}
+.colors > li:hover{
+	box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.2);
+}
