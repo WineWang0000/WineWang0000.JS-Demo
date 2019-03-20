@@ -1,5 +1,6 @@
     var canvas = document.getElementById('x')
 		var context = canvas.getContext('2d')
+		var lineWidth = 2
 
 		setCanvasSize()
 		window.onresize = function(){
@@ -84,7 +85,7 @@
 		function drawLine(x1,y1,x2,y2){
 			context.beginPath()
 			context.moveTo(x1,y1)
-			context.lineWidth = 4
+			context.lineWidth = lineWidth
 			context.lineTo(x2,y2)
 			context.stroke()
 			context.closePath()
@@ -102,6 +103,17 @@
 			eraser.classList.remove('active')
 			context.strokeStyle = 'black'
 		}
+		clear.onclick = function(){
+			context.clearRect(0, 0, canvas.width, canvas.height);
+		}
+		download.onclick = function(){
+			var url = canvas.toDataURL('image/png')
+			var a =document.createElement('a')
+			document.body.appendChild(a)
+			a.href = url
+			a.download = 'downloadImage'
+			a.click()
+		}
 		red.onclick = function(){
 			context.strokeStyle = 'red'
 		}
@@ -110,4 +122,10 @@
 		}
 		blue.onclick = function(){
 			context.strokeStyle = 'blue'
+		}
+		pachytene.onclick = function(){
+			lineWidth = 5
+		}
+		filament.onclick = function(){
+			lineWidth = 2
 		}

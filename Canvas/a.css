@@ -11,7 +11,7 @@ ol{
 	fill: currentColor;
 	overflow: hidden;
 	font-size: 20px;
-	padding: 10px;
+	padding: 10px 20px;
 }
 .tool svg{
 	width: 1.2em;
@@ -52,13 +52,18 @@ button{
 .colors{
 	position: fixed;
 	top: 50px;
-	left: 15px;
+	left: 25px;
 }
 .colors > li{
 	width: 22px;
 	height: 22px;
 	margin: 30px 0;
 	border-radius: 50%;
+	cursor: pointer;
+}
+.colors > li:hover{
+	box-shadow: darkgrey;
+	transform: scale(1.2);
 }
 .colors > li:nth-child(1){
 	background:red;
@@ -71,4 +76,24 @@ button{
 }
 .colors > li:hover{
 	box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.2);
+}
+.lines{
+	position: fixed;
+	top: 220px;
+	left: 26px;
+	text-align: center;
+}
+.lines > li{
+	width: 22px;
+	height: 22px;
+	margin: 30px 0;
+	border-radius: 50%;
+	background: #000;
+	color: white;
+	font-size: 10px;
+	line-height: 22px;
+}
+.lines > li:hover{
+	cursor: pointer;
+	transform: scale(1.2);
 }
