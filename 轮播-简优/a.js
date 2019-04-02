@@ -10,11 +10,11 @@ for(let i=0;i<allButtons.length; i++){
 }
  var n = 0
  var allImg = $('#pictures > img')
- var picturesCount = allImg.length
+ var imgCount = allImg.length
  var clock = setInterval(()=>{
    n += 1
-   allButtons.eq(n%picturesCount).trigger('click').addClass('red').siblings('.red').removeClass('red')
- },2000)
+   allButtons.eq(n % imgCount).trigger('click').addClass('red').siblings('.red').removeClass('red')
+ }, 2000)
 
  $('.cats').on('mouseenter', function() {
    window.clearInterval(clock) //window加了更保险，记住你第一次写的什么。尴尬不？
@@ -23,7 +23,7 @@ for(let i=0;i<allButtons.length; i++){
 $('.cats').on('mouseleave', function() {
   clock = setInterval(() => {
     n += 1
-    allButtons.eq(n % picturesCount).trigger('click')
+    allButtons.eq(n % imgCount).trigger('click')
       .addClass('red')
       .siblings('.red').removeClass('red')
   }, 2000)
