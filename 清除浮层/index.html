@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>clear supernatant</title>
+	<style>
+	  .wrapper{
+			border: 1px solid red;
+			position: relative;
+			display: inline-block; /*注意我*/
+		}
+		.popover{
+			border: 1px solid red;
+			display: none;
+			position: absolute;
+			top: 0;
+			left: 65px;
+			padding: 15px 15px;
+			background: #ffffff;
+			white-space: nowrap;
+			margin-left: 10px;
+		}
+		.popover::before{
+			content: '';
+			position: absolute;
+			border: 10px solid transparent;
+			border-right-color: red;
+			right: 100%;
+			top: 5px;
+		}
+		.popover::after{
+			content: '';
+			position: absolute;
+			border: 10px solid transparent;
+			border-right-color: white;
+			right: 100%;
+			top: 5px;
+			margin-right: -1px;
+		}
+	</style>
+</head>
+<body>
+	<div id=wrapper class="wrapper">
+    <button id=button>点我</button>
+    <div id=popover class="popover">
+      <input type="checkbox">浮层
+    </div>
+	</div>
+	<script>
+	  $('button').on('click', function(){
+			$(popover).show()
+			$(document).one('click', function(){
+				console.log(1)
+				$(popover).hide()
+			})
+		})
+		$(wrapper).on('click',function(e){
+			e.stopPropagation()
+		})
+		
+
+		//第二种
+
+		/*
+			clickMe.addEventListener('click', function(e){
+			popover.style.display = 'block'
+		})
+		wrapper.addEventListener('click', function(e){
+			e.stopPropagation()
+		})
+
+		document.addEventListener('click', function(){
+			popover.style.display = 'none'
+		})
+		*/
+	</script>
+</body>
+</html>
