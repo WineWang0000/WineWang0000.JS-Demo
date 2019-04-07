@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
 	<title>clear supernatant</title>
 	<style>
 	  .wrapper{
@@ -49,32 +50,31 @@
     </div>
 	</div>
 	<script>
-	  $('button').on('click', function(){
+		$(button).on('click', function(){
 			$(popover).show()
 			$(document).one('click', function(){
 				console.log(1)
 				$(popover).hide()
 			})
 		})
+
 		$(wrapper).on('click',function(e){
 			e.stopPropagation()
 		})
-		
 
 		//第二种
 
-		/*
-			clickMe.addEventListener('click', function(e){
-			popover.style.display = 'block'
-		})
-		wrapper.addEventListener('click', function(e){
-			e.stopPropagation()
-		})
+			// button.addEventListener('click', function(e){
+			// 	popover.style.display = 'block'
+			// })
 
-		document.addEventListener('click', function(){
-			popover.style.display = 'none'
-		})
-		*/
+			// wrapper.addEventListener('click', function(e){
+			// 	e.stopPropagation()
+			// })
+			
+			// document.addEventListener('click', function(){
+			// 	popover.style.display = 'none'
+			// })
 	</script>
 </body>
 </html>

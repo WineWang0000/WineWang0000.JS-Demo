@@ -8,9 +8,11 @@ for(let i=0;i<allButtons.length; i++){
     })
   })
 }
+
  var n = 0
  var allImg = $('#pictures > img')
  var imgCount = allImg.length
+ 
  var clock = setInterval(()=>{
    n += 1
    allButtons.eq(n % imgCount).trigger('click').addClass('red').siblings('.red').removeClass('red')
