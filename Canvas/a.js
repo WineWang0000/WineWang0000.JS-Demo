@@ -40,18 +40,18 @@
 			 if(!using) {return}
 				if(eraserEnabled){
 					context.clearRect(x-4,y-4,10,10)
-					}else{
-						var newPoint = {x:x,y:y}
-						drawCircle(x,y,1)
-						drawLine(lastPoint.x,lastPoint.y,newPoint.x,newPoint.y)
-						lastPoint = newPoint
-					}
+				}else{
+					var newPoint = {x:x,y:y}
+					drawCircle(x,y,1)
+					drawLine(lastPoint.x,lastPoint.y,newPoint.x,newPoint.y)
+					lastPoint = newPoint
+				}
 		}
 		
 		canvas.ontouchend = function(a){
 			using = false
 		}
-		}else{
+    }else{
 			canvas.onmousedown = function(a){
 			var x = a.clientX
 			var y = a.clientY
@@ -61,7 +61,7 @@
 			}else{
 				lastPoint = {x:x,y:y}
 				drawCircle(x,y,1)
-			}
+		  }
 		}
 		canvas.onmousemove = function(a){
 			 var x = a.clientX
@@ -69,12 +69,12 @@
 			 if(!using) {return}
 				if(eraserEnabled){
 					context.clearRect(x-4,y-4,10,10)
-					}else{
+				}else{
 						var newPoint = {x:x,y:y}
 						drawCircle(x,y,1)
 						drawLine(lastPoint.x,lastPoint.y,newPoint.x,newPoint.y)
 						lastPoint = newPoint
-					}
+			  }
 		}
 		
 		canvas.onmouseup = function(a){
