@@ -2,6 +2,23 @@
 // var text = Prism.highlight(code, Prism.languages.javascript, 'javascript');
 // console.log(tetx)
 
+
+function writeCode(prefix, code, fn){
+	let pre = document.querySelector('#pre')	
+	pre.innerHTML = prefix || ''
+	let n = 0
+  let clock = setInterval(()=>{
+		n += 1
+		pre.innerHTML = prefix + code.substring(0, n)
+		styleTag.innerHTML = prefix + code.substring(0, n)
+		pre.scrollTop = 100000
+		if(n >= code.length){
+			window.clearInterval(clock)
+			fn.call()
+		}
+	}, 10)
+}
+
 var a = `
 /*
  * 尊敬的面试官，您好!
@@ -18,7 +35,11 @@ body{
 }
 #pre{
   border: 1px solid;
-  padding: 16px;
+	padding: 16px;
+	position: fixed;
+	left: 0;
+	width: 50%;
+	height: 100%;
 }
 /*
  * 看我，旋转，跳跃。
@@ -26,43 +47,74 @@ body{
 #pre{
   transform: rotateY(360deg);
 }
+/*
+ * 好了，不玩了，现在用文字来介绍下我自己吧。
+ * 现在我需要一张纸，看我变变变。
+*/
+#paper{
+	position: fixed;
+	right: 0;
+	width: 50%;
+	height: 100%;
+	background: black;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px;
+}
+#paper > .content{
+	background: white;
+	height: 100%;
+	width: 100%;
+}
 `
-var n = 0
-var clock = setInterval(()=>{
-  n += 1
-  pre.innerHTML = a.substring(0, n)
-	pre.innerHTML= pre.innerHTML.replace('#pre', '<span style="color:red;">#pre</span>')
-	// pre.innerHTML= Prism.highLight(pre.innerHTML, Prism.language.css)
-  styleTag.innerHTML = a.substring(0, n)
-  if(n >= a.length){
-		window.clearInterval(clock)
-		f2()
-	  f3(a)
-  }
-}, 10)
+var b = `
+#paper{
+  
+}
+	`
+var md = `
+	# 自我介绍
+	我是xxx，毕业于xxx学校。自学前端，希望应聘贵公司xxx岗位。
 
-function f2(){
+	# 技能介绍
+	熟悉HTMl，CSS，JavaScript等相关知识
+
+	# 联系方式
+	电话：17878787877
+	邮箱：120120120.@qq.com
+	
+
+`
+writeCode('', a, ()=>{
+	createPaper(()=>{
+		writeCode(a, b, ()=>{
+			writeMarkdown(md)
+		})
+	})
+})
+
+function createPaper(fn){
 	var paper = document.createElement('div')
 	paper.id = 'paper'
 	document.body.appendChild(paper)
+	var content = document.createElement('pre')
+	content.className = 'content'
+	paper.appendChild(content)
+	document.body.appendChild(paper)
+	fn.call()
 }
 
-
-function f3(content){
-	var b = `
-#paper{
-  width: 100px;
-  height: 100px;
-  background: lightblue;
-}
-  `
-	var n = 0
-	var clock = setInterval(()=>{
+function writeMarkdown(markdown, fn){
+	let domPaper = document.querySelector('#paper > .content')
+	let n = 0
+  let clock = setInterval(()=>{
 		n += 1
-		pre.innerHTML = pre.innerHTML + b.substring(n-1, n)
-		styleTag.innerHTML = a + b.slice(0, n)
-		if(n >= b.length){
-		window.clearInterval(clock)
-	}
+		domPaper.innerHTML = markdown.substring(0, n)
+		domPaper.scrollTop = domPaper.scrollHeight 
+		if(n >= markdown.length){
+			window.clearInterval(clock)
+			// fn.call()
+		}
 	}, 10)
 }

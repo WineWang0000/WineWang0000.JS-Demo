@@ -1,5 +1,6 @@
-.token.property，
-.token.function,
-.token.selector{
-	color: black;
+*{margin: 0; padding: 0;}
+*{box-sizing: border-box;}
+#pre{
+	height: 100vh;
+	/* overflow: hidden; */
 }
