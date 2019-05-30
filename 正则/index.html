@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var data ={
+			email: '',
+			password: '123'
+		}
+		var rules = [
+			{key: 'email', pattern: 'email', required: true},
+			{key: 'password', minlength: 6,maxLength: 20}
+		]
+
+		validate(data, rules)
+
+		function validate(data, rules){
+			let errors = {}
+			rules.forEach((rule)=>{
+				let value = data[rule.key]
+				if(rule.required){
+					if(!value){
+						errors[rule.key] = {required: '必填'}
+					}
+				}
+				if(rule.pattern){
+					if(rule.pattern === 'email'){
+						if(/^.+@.+$/.test(value) === false){
+							errors[rule.key] = {pattern: 'email格式不正确'}
+						}
+					}
+				}
+			})
+			console.log(errors)
+		}
+  </script>
+</body>
+</html>
