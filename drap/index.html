@@ -24,8 +24,6 @@
 			let X = end[0] - start[0]
 			let Y = end[1] - start[1]
 			let {left, top} = window.getComputedStyle(test) //offsetLeft,offsetTop
-			console.log(test.style.left)
-			console.log(test.style.top)
 			test.style.offsetLeft = parseInt(test.style.left) + X + 'px'
 			test.style.offsetTop = parseInt(test.style.left) + Y + 'px'
 		})
