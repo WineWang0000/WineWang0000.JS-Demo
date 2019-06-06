@@ -7,31 +7,28 @@
 	<title>Document</title>
 </head>
 <body>
-		<div id="test" class="test" 
-		draggable="true">
-		test
- </div>
- <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+	<div id="test" class="test" draggable="true">test</div>
+  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
 	<script>
-	 let test = document.querySelector('#test')
-let start
-let end
-test.addEventListener('dragstart', function(e){
-  let {screenX:x, screenY:y} = e
-  start = [x, y]
-})
+		let test = document.querySelector('#test')
+		let start
+		let end
+		test.addEventListener('dragstart', function(e){
+			let {screenX:x, screenY:y} = e
+			start = [x, y]
+		})
 
-test.addEventListener('dragend', function(e){
-  let {screenX:x, screenY:y} = e
-  end = [x, y]
-  let X = end[0] - start[0]
-  let Y = end[1] - start[1]
-  let {left, top} = window.getComputedStyle(test)
-  console.log(test.style.left)
-  console.log(test.style.top)
-  test.style.offsetLeft = parseInt(test.style.left) + X + 'px'
-  test.style.offsetTop = parseInt(test.style.left) + Y + 'px'
-})
+		test.addEventListener('dragend', function(e){
+			let {screenX:x, screenY:y} = e
+			end = [x, y]
+			let X = end[0] - start[0]
+			let Y = end[1] - start[1]
+			let {left, top} = window.getComputedStyle(test) //offsetLeft,offsetTop
+			console.log(test.style.left)
+			console.log(test.style.top)
+			test.style.offsetLeft = parseInt(test.style.left) + X + 'px'
+			test.style.offsetTop = parseInt(test.style.left) + Y + 'px'
+		})
 	</script>
 </body>
 </html>
