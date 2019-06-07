@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+	  div{display: none;}
+	</style>
+</head>
+<body>
+	<a href="#1">1</a>
+  <a href="#2">2</a>
+  <a href="#3">3</a>
+  
+	<div id="app"></div>
+	
+	<div id="div1">a</div>
+	<div id="div2">b</div>
+	<div id="div3">c</div>
+</body>
+<script>
+const template = `<div id="div1">a</div>
+	<div id="div2">b</div>
+	<div id="div3">c</div>`;
+const tempNode = document.createElement('div');
+tempNode.innerHTML = template;
+let number = window.location.hash.substr(1)
+console.log(number)
+let div = document.querySelector(`#div${number}`)
+let app = document.querySelector('#app')
+if(div)div.style.display = 'block'
+if(app)app.appendChild(div)
+
+window.addEventListener('hashchange',() =>{
+  console.log('ok')
+  const number2 = window.location.hash.substr(1)
+  const div2 = document.querySelector('#div${number2}')
+  if(div)div2.style.display = 'block'
+	app2.empty()
+  app.appendChild(div2)        
+})
+window.addEventListener('hashchange',() =>{
+  console.log('ok')
+  const number3 = window.location.hash.substr(1)
+  const div3 = document.querySelector('#div${number3}')
+  if(div)div3.style.display = 'block'
+  app.appendChild(div3)        
+})
+
+</script>
+</html>
